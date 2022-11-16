@@ -21,6 +21,12 @@ tasks.withType<Test>().configureEach {
     }
 }
 
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        allWarningsAsErrors = true
+    }
+}
+
 dependencies {
     testImplementation(libs.bundles.kotest)
 }
