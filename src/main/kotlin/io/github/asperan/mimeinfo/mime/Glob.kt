@@ -10,6 +10,9 @@ package io.github.asperan.mimeinfo.mime
 
 import io.github.asperan.helper.formatOrEmptyString
 
+/**
+ * The `glob` element.
+ */
 class Glob(
     private val pattern: String,
     private val weight: UByte? = null,

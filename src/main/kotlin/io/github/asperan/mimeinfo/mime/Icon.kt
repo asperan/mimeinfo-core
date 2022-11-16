@@ -8,6 +8,11 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 package io.github.asperan.mimeinfo.mime
 
+/**
+ * The `icon` element.
+ *
+ * This element can be used for both `icon` and `generic-icon`.
+ */
 class Icon(private val name: String) : ClosedElement() {
     override val elementName: String get() = "icon"
     override val attributesString: String get() = "name=\"${this.name}\""
