@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.qa)
     signing
     `maven-publish`
+    alias(libs.plugins.gitSemVer)
 }
 
 group = "io.github.asperan"
@@ -14,6 +15,11 @@ repositories {
 
 dependencies {
     testImplementation(libs.bundles.kotest)
+}
+
+gitSemVer {
+    buildMetadataSeparator.set("-")
+    maxVersionLength.set(20)
 }
 
 java {

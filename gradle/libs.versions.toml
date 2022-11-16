@@ -16,3 +16,4 @@ kotest = [ "kotest-runner-junit5", "kotest-assertions-core", "kotest-property" ]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 kotlin-qa = { id = "org.danilopianini.gradle-kotlin-qa", version.ref = "kotlin-qa" }
+gitSemVer = { id = "org.danilopianini.git-sensitive-semantic-versioning-gradle-plugin", version = "0.3.21" }
