@@ -17,8 +17,8 @@ class TestMagic : FunSpec() {
     init {
         test("Simple Magic XML with builder") {
             val testString = "<magic priority=\"$DEFAULT_PRIORITY\">\n" +
-                    "$DEFAULT_INDENT_STRING<match type=\"${Match.Type.STRING}\" offset=\"0\" value=\"0x45\"/>\n" +
-                    "</magic>"
+                "$DEFAULT_INDENT_STRING<match type=\"${Match.Type.STRING}\" offset=\"0\" value=\"0x45\"/>\n" +
+                "</magic>"
             val magic = Magic.Builder()
                 .setPriority(DEFAULT_PRIORITY)
                 .addMatch(Match(Match.Type.STRING, Match.Offset(0u), "0x45"))

@@ -16,10 +16,10 @@ class TestMimeInfoSpecs : FunSpec() {
     init {
         test("Simple MimeInfoSpecs XML") {
             val testString = "<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>\n" +
-                    "$DEFAULT_INDENT_STRING<mime-type type=\"text/drmime\">\n" +
-                    "${DEFAULT_INDENT_STRING.repeat(2)}<glob pattern=\"*.drmime\"/>\n" +
-                    "$DEFAULT_INDENT_STRING</mime-type>\n" +
-                    "</mime-info>"
+                "$DEFAULT_INDENT_STRING<mime-type type=\"text/drmime\">\n" +
+                "${DEFAULT_INDENT_STRING.repeat(2)}<glob pattern=\"*.drmime\"/>\n" +
+                "$DEFAULT_INDENT_STRING</mime-type>\n" +
+                "</mime-info>"
             val m = MimeInfoSpecs.Builder().addMimeType(
                 MimeTypeSpecs.Builder()
                     .setType(MimeTypeSpecs.Type(MimeTypeSpecs.Type.MimeClass.TEXT, "drmime"))
