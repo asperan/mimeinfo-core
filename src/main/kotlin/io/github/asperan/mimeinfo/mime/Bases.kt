@@ -85,9 +85,11 @@ abstract class ElementWithTextualChild(
     private val xmlLang: String? = null
 ) : ElementWithChildren()
 {
-    final override val attributesString: String get() = this.xmlLang.formatOrEmptyString { "xml:lang=\"${this.xmlLang}\"" }
+    final override val attributesString: String get() =
+        this.xmlLang.formatOrEmptyString { "xml:lang=\"${this.xmlLang}\"" }
 
-    final override fun getChildrenString(indentLevel: UInt, indentString: String): String = computeIndentPrefix(indentLevel, indentString) + this.value
+    final override fun getChildrenString(indentLevel: UInt, indentString: String): String =
+        computeIndentPrefix(indentLevel, indentString) + this.value
 }
 
 /**
