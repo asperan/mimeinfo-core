@@ -20,7 +20,9 @@ class Match(
     private val mask: String? = null,
 ) : ClosedElement() {
     override val elementName: String get() = "match"
-    override val attributesString: String get() = "type=\"${this.type}\" offset=\"${this.offset}\" value=\"${this.value}\"" + this.mask.formatOrEmptyString { " mask=\"${it}\"" }
+    override val attributesString: String get() =
+        "type=\"${this.type}\" offset=\"${this.offset}\" value=\"${this.value}\"" +
+                this.mask.formatOrEmptyString { " mask=\"${it}\"" }
 
     /**
      * The offset of the match.

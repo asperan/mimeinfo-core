@@ -16,4 +16,5 @@ package io.github.asperan.helper
  *
  * @return The indentation string to prefix.
  */
-internal fun computeIndentPrefix(indentLevel: UInt, indentString: String): String = indentString.repeat(indentLevel.toInt())
+internal fun computeIndentPrefix(indentLevel: UInt, indentString: String): String =
+    indentString.repeat(indentLevel.toInt())

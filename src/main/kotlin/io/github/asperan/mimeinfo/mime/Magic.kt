@@ -20,7 +20,8 @@ class Magic(
 ) : ElementWithCompoundChildren() {
     override val elementName: String get() = "magic"
     override val attributesString: String get() = "priority=\"${this.priority}\""
-    override fun getChildrenString(indentLevel: UInt, indentString: String): String = this.matches.joinToString("\n") { it.toXmlString(indentLevel, indentString) }
+    override fun getChildrenString(indentLevel: UInt, indentString: String): String =
+        this.matches.joinToString("\n") { it.toXmlString(indentLevel, indentString) }
 
     /**
      * Builder for Magic elements.

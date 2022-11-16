@@ -56,7 +56,9 @@ class MimeTypeSpecs(
             this.magics,
             this.treeMagics,
         )
-        return children.flatMap { it.map { element -> element.toXmlString(indentLevel, indentString) } }.joinToString("\n")
+        return children.flatMap {
+            it.map { element -> element.toXmlString(indentLevel, indentString) }
+        }.joinToString("\n")
     }
 
     /**
@@ -149,7 +151,22 @@ class MimeTypeSpecs(
         val addTreeMagic = builderMethod<TreeMagic> { this.treeMagics += it}
 
         override fun build(): MimeTypeSpecs = when (this.type) {
-            is Type -> MimeTypeSpecs(this.type!!, this.globs, this.globDeleteAll, this.magics, this.magicDeleteAll, this.aliases, this.superClasses, this.comments, this.acronyms, this.expandedAcronyms, this.icon, this.genericIcon, this.rootXml, this.treeMagics)
+            is Type -> MimeTypeSpecs(
+                this.type!!,
+                this.globs,
+                this.globDeleteAll,
+                this.magics,
+                this.magicDeleteAll,
+                this.aliases,
+                this.superClasses,
+                this.comments,
+                this.acronyms,
+                this.expandedAcronyms,
+                this.icon,
+                this.genericIcon,
+                this.rootXml,
+                this.treeMagics
+            )
             else -> throw BuilderStateException()
         }
     }
