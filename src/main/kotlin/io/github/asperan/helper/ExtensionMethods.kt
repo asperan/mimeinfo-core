@@ -17,7 +17,7 @@ package io.github.asperan.helper
  *
  * @return A string: formatted if the receiver is not null, else empty.
  */
-internal inline fun <reified T> T?.formatOrEmptyString(formatter: (T) -> String) = when(this) {
+internal inline fun <reified T> T?.formatOrEmptyString(formatter: (T) -> String) = when (this) {
     is T -> formatter(this)
     else -> ""
 }
@@ -32,7 +32,7 @@ internal inline fun <reified T> T?.formatOrEmptyString(formatter: (T) -> String)
  *
  * @return A list: containing the receiver if not null, else empty.
  */
-internal inline fun <reified T> T?.asList(): List<T> = when(this) {
+internal inline fun <reified T> T?.asList(): List<T> = when (this) {
     is T -> listOf(this)
     else -> listOf()
 }
