@@ -9,7 +9,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 package io.github.asperan.mimeinfo.mime
 
 import io.github.asperan.helper.builder.AbstractBuilder
-import io.github.asperan.helper.defaultPriority
+import io.github.asperan.helper.DEFAULT_PRIORITY
 
 /**
  * The `treemagic` element.
@@ -29,7 +29,7 @@ class TreeMagic(
      */
     class Builder : AbstractBuilder<TreeMagic, Builder>() {
         private var treeMatches: List<TreeMatch> = listOf()
-        private var priority: UByte = defaultPriority
+        private var priority: UByte = DEFAULT_PRIORITY
 
         /**
          * Add a TreeMatch to the TreeMagic to be built.

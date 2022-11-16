@@ -11,7 +11,7 @@ package io.github.asperan.helper
 /**
  * The default priority of various elements.
  */
-internal const val defaultPriority: UByte = 50u
+internal const val DEFAULT_PRIORITY: UByte = 50u
 
 /**
  * The default string to use for indentation of the xml file.

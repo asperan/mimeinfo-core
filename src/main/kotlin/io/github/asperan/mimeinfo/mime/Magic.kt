@@ -9,7 +9,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 package io.github.asperan.mimeinfo.mime
 
 import io.github.asperan.helper.builder.AbstractBuilder
-import io.github.asperan.helper.defaultPriority
+import io.github.asperan.helper.DEFAULT_PRIORITY
 
 /**
  * The `magic` element.
@@ -27,7 +27,7 @@ class Magic(
      */
     class Builder : AbstractBuilder<Magic, Builder>() {
         private var matches: List<Match> = listOf()
-        private var priority: UByte = defaultPriority
+        private var priority: UByte = DEFAULT_PRIORITY
 
         /**
          * Adds a match to the magic specification.
