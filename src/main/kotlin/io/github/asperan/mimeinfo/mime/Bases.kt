@@ -72,9 +72,11 @@ abstract class ElementWithChildren : MimeTypeElement
     protected abstract fun getChildrenString(indentLevel: UInt, indentString: String): String
 
     final override fun toXmlString(indentLevel: UInt, indentString: String): String =
-        computeIndentPrefix(indentLevel, indentString) + "<${this.elementName} ${this.attributesString}>\n" +
-        this.getChildrenString(indentLevel + 1u, indentString) +
-        "\n" + computeIndentPrefix(indentLevel, indentString) + "</${this.elementName}>"
+        computeIndentPrefix(indentLevel, indentString).let {
+            "${it}<${this.elementName} ${this.attributesString}>\n" +
+                    "${this.getChildrenString(indentLevel + 1u, indentString)}\n" +
+             "${it}</${this.elementName}>"
+        }
 }
 
 /**
