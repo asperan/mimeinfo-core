@@ -32,7 +32,8 @@ class TreeMatch(
             this.nonEmpty.formatOrEmptyString { " non-empty=\"${it}\"" } +
             this.mimetype.formatOrEmptyString { " mimetype=\"${it}\"" }
 
-    override fun getChildrenString(indentLevel: UInt, indentString: String): String = this.children.joinToString("\n"){ toXmlString(indentLevel, indentString) }
+    override fun getChildrenString(indentLevel: UInt, indentString: String): String =
+        this.children.joinToString("\n"){ toXmlString(indentLevel, indentString) }
 
     /**
      * Builder for TreeMatch.
@@ -82,7 +83,15 @@ class TreeMatch(
         val addTreeMatch = builderMethod<TreeMatch> { this.children += it }
 
         override fun build(): TreeMatch = when(this.path) {
-            is String -> TreeMatch(this.path!!, this.treeMatchType, this.matchCase, this.isExecutable, this.nonEmpty, this.mimetype, this.children)
+            is String -> TreeMatch(
+                this.path!!,
+                this.treeMatchType,
+                this.matchCase,
+                this.isExecutable,
+                this.nonEmpty,
+                this.mimetype,
+                this.children
+            )
             else -> throw BuilderStateException()
         }
     }
