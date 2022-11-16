@@ -21,9 +21,12 @@ class TestMimeInfoSpecs : FunSpec() {
                     "$DEFAULT_INDENT_STRING</mime-type>\n" +
                     "</mime-info>"
             val m = MimeInfoSpecs.Builder().addMimeType(
-                MimeTypeSpecs.Builder().setType(MimeTypeSpecs.Type(MimeTypeSpecs.Type.MimeClass.TEXT, "drmime")).addGlob(
-                Glob("*.drmime")
-            ).build()).build()
+                MimeTypeSpecs.Builder()
+                    .setType(MimeTypeSpecs.Type(MimeTypeSpecs.Type.MimeClass.TEXT, "drmime"))
+                    .addGlob(
+                        Glob("*.drmime")
+                    ).build()
+            ).build()
             m.toXmlString(0u).shouldBe(testString)
         }
     }

@@ -21,7 +21,9 @@ class TestExpandedAcronym : FunSpec() {
         }
 
         test("ExpandedAcronym XML with xml:lang") {
-            val testString = "<expanded-acronym xml:lang=\"en_US.utf8\">\n${DEFAULT_INDENT_STRING}Test Expanded Acronym\n</expanded-acronym>"
+            val testString = "<expanded-acronym xml:lang=\"en_US.utf8\">\n" +
+                    "${DEFAULT_INDENT_STRING}Test Expanded Acronym\n" +
+                    "</expanded-acronym>"
             val e = ExpandedAcronym("Test Expanded Acronym", "en_US.utf8")
             e.toXmlString(0u).shouldBe(testString)
         }

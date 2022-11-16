@@ -18,7 +18,8 @@ class TestFunctions : FunSpec() {
         }
 
         test("computePrefix should repeat the indentString for the given number of times") {
-            computeIndentPrefix(3u, DEFAULT_INDENT_STRING).shouldBe(DEFAULT_INDENT_STRING + DEFAULT_INDENT_STRING + DEFAULT_INDENT_STRING)
+            val expectedString = DEFAULT_INDENT_STRING + DEFAULT_INDENT_STRING + DEFAULT_INDENT_STRING
+            computeIndentPrefix(3u, DEFAULT_INDENT_STRING).shouldBe(expectedString)
         }
     }
 }

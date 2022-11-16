@@ -21,7 +21,8 @@ class TestComment : FunSpec() {
         }
 
         test("Comment XML with xml_lang") {
-            val testString = "<comment xml:lang=\"en_US.utf8\">\n${DEFAULT_INDENT_STRING}test mimetype comment\n</comment>"
+            val testString =
+                "<comment xml:lang=\"en_US.utf8\">\n${DEFAULT_INDENT_STRING}test mimetype comment\n</comment>"
             val c = Comment("test mimetype comment", "en_US.utf8")
             c.toXmlString(0u).shouldBe(testString)
         }

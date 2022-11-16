@@ -16,7 +16,11 @@ import io.kotest.matchers.shouldBe
 class TestTreeMagic : FunSpec() {
     init {
         test("Simple TreeMagic XML") {
-            val testString = "<treemagic priority=\"$DEFAULT_PRIORITY\">\n$DEFAULT_INDENT_STRING<treematch path=\"/my/custom/path\">\n\n$DEFAULT_INDENT_STRING</treematch>\n</treemagic>"
+            val testString = "<treemagic priority=\"$DEFAULT_PRIORITY\">\n" +
+                    "$DEFAULT_INDENT_STRING<treematch path=\"/my/custom/path\">\n" +
+                    "\n" +
+                    "$DEFAULT_INDENT_STRING</treematch>\n" +
+                    "</treemagic>"
             val t = TreeMagic.Builder().addTreeMatch(TreeMatch.Builder().setPath("/my/custom/path").build()).build()
             t.toXmlString(0u).shouldBe(testString)
         }
