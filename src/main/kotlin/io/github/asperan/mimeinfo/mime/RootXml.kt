@@ -16,5 +16,6 @@ class RootXml(
     private val localName: String,
 ) : ClosedElement() {
     override val elementName: String get() = "root-XML"
-    override val attributesString: String get() = "namespaceURI=\"${this.namespaceUri}\" localname=\"${this.localName}\""
+    override val attributesString: String get() =
+        "namespaceURI=\"${this.namespaceUri}\" localname=\"${this.localName}\""
 }

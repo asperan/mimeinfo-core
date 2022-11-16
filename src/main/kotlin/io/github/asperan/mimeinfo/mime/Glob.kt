@@ -18,5 +18,6 @@ class Glob(
     private val weight: UByte? = null,
 ) : ClosedElement() {
     override val elementName: String get() = "glob"
-    override val attributesString: String get() = "pattern=\"" + this.pattern + "\"" + this.weight.formatOrEmptyString { " weight=\"${it}\"" }
+    override val attributesString: String get() =
+        "pattern=\"${this.pattern}\"${this.weight.formatOrEmptyString { " weight=\"${it}\"" }}"
 }

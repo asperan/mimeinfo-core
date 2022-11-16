@@ -21,7 +21,8 @@ class MimeInfoSpecs(
     override val elementName: String get() = "mime-info"
     override val attributesString: String get() = "xmlns='${xmlNamespace}'"
 
-    override fun getChildrenString(indentLevel: UInt, indentString: String): String = this.mimeTypes.joinToString("\n") { it.toXmlString(indentLevel, indentString) }
+    override fun getChildrenString(indentLevel: UInt, indentString: String): String =
+        this.mimeTypes.joinToString("\n") { it.toXmlString(indentLevel, indentString) }
 
     /**
      * Builder for MimeInfo elements.
