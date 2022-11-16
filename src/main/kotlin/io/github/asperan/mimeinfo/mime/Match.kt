@@ -10,6 +10,9 @@ package io.github.asperan.mimeinfo.mime
 
 import io.github.asperan.helper.formatOrEmptyString
 
+/**
+ * The `match` element.
+ */
 class Match(
     private val type: Type,
     private val offset: Offset,
@@ -19,6 +22,9 @@ class Match(
     override val elementName: String get() = "match"
     override val attributesString: String get() = "type=\"${this.type}\" offset=\"${this.offset}\" value=\"${this.value}\"" + this.mask.formatOrEmptyString { " mask=\"${it}\"" }
 
+    /**
+     * The offset of the match.
+     */
     data class Offset(
         private val start: UInt,
         private val end: UInt? = null,
@@ -26,6 +32,9 @@ class Match(
         override fun toString(): String = "${this.start}" + this.end.formatOrEmptyString { ":${it}" }
     }
 
+    /**
+     * The type of the match. The possible types are defined in the shared MIME system documentation.
+     */
     enum class Type {
         STRING, HOST16, HOST32, BIG16, BIG32, LITTLE16, LITTLE32, BYTE;
         override fun toString(): String = this.name.lowercase()

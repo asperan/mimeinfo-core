@@ -8,6 +8,9 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 package io.github.asperan.mimeinfo.mime
 
+/**
+ * The `root-XML` element.
+ */
 class RootXml(
     private val namespaceUri: String,
     private val localName: String,

@@ -8,6 +8,9 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 package io.github.asperan.mimeinfo.mime
 
+/**
+ * The `sub-class-of` element.
+ */
 class SubClassOf(
     private val type: String,
 ) : ClosedElement() {
