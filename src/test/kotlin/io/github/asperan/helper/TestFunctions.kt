@@ -14,11 +14,11 @@ import io.kotest.matchers.shouldBe
 class TestFunctions : FunSpec() {
     init {
         test("Compute prefix with 0 length should be an empty string") {
-            computeIndentPrefix(0u, defaultIndentString).shouldBe("")
+            computeIndentPrefix(0u, DEFAULT_INDENT_STRING).shouldBe("")
         }
 
         test("computePrefix should repeat the indentString for the given number of times") {
-            computeIndentPrefix(3u, defaultIndentString).shouldBe(defaultIndentString + defaultIndentString + defaultIndentString)
+            computeIndentPrefix(3u, DEFAULT_INDENT_STRING).shouldBe(DEFAULT_INDENT_STRING + DEFAULT_INDENT_STRING + DEFAULT_INDENT_STRING)
         }
     }
 }

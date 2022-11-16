@@ -9,7 +9,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 package io.github.asperan.mimeinfo.mime
 
 import io.github.asperan.helper.computeIndentPrefix
-import io.github.asperan.helper.defaultIndentString
+import io.github.asperan.helper.DEFAULT_INDENT_STRING
 import io.github.asperan.helper.formatOrEmptyString
 
 /**
@@ -35,7 +35,7 @@ interface MimeTypeElement {
      *
      * @return The XML corresponding to the element.
      */
-    fun toXmlString(indentLevel: UInt, indentString: String = defaultIndentString): String
+    fun toXmlString(indentLevel: UInt, indentString: String = DEFAULT_INDENT_STRING): String
 }
 
 /**

@@ -8,20 +8,20 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 package io.github.asperan.mimeinfo.mime
 
-import io.github.asperan.helper.defaultIndentString
+import io.github.asperan.helper.DEFAULT_INDENT_STRING
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 
 class TestAcronym : FunSpec() {
     init {
         test("Simple Acronym XML") {
-            val testString = "<acronym >\n${defaultIndentString}DRM\n</acronym>"
+            val testString = "<acronym >\n${DEFAULT_INDENT_STRING}DRM\n</acronym>"
             val a = Acronym("DRM")
             a.toXmlString(0u).shouldBe(testString)
         }
 
         test("Acronym XML with xml:lang") {
-            val testString = "<acronym xml:lang=\"en_US.utf8\">\n${defaultIndentString}DRM\n</acronym>"
+            val testString = "<acronym xml:lang=\"en_US.utf8\">\n${DEFAULT_INDENT_STRING}DRM\n</acronym>"
             val a = Acronym("DRM", "en_US.utf8")
             a.toXmlString(0u).shouldBe(testString)
         }

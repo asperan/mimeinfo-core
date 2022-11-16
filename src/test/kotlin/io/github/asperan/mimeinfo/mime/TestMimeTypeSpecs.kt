@@ -8,7 +8,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 package io.github.asperan.mimeinfo.mime
 
-import io.github.asperan.helper.defaultIndentString
+import io.github.asperan.helper.DEFAULT_INDENT_STRING
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 
@@ -16,16 +16,16 @@ class TestMimeTypeSpecs : FunSpec() {
     init {
         test("Simple MimeTypeSpecs XML") {
             val testString = "<mime-type type=\"text/drawio\">\n" +
-                "$defaultIndentString<comment >\n" +
-                        "${defaultIndentString.repeat(2)}Just a comment\n" +
-                    "$defaultIndentString</comment>\n" +
-                    "$defaultIndentString<acronym >\n" +
-                        "${defaultIndentString.repeat(2)}DRAWIO\n" +
-                    "$defaultIndentString</acronym>\n" +
-                    "$defaultIndentString<expanded-acronym >\n" +
-                        "${defaultIndentString.repeat(2)}Drawio Project\n" +
-                    "$defaultIndentString</expanded-acronym>\n" +
-                    "$defaultIndentString<sub-class-of type=\"text/plain\"/>\n" +
+                "$DEFAULT_INDENT_STRING<comment >\n" +
+                        "${DEFAULT_INDENT_STRING.repeat(2)}Just a comment\n" +
+                    "$DEFAULT_INDENT_STRING</comment>\n" +
+                    "$DEFAULT_INDENT_STRING<acronym >\n" +
+                        "${DEFAULT_INDENT_STRING.repeat(2)}DRAWIO\n" +
+                    "$DEFAULT_INDENT_STRING</acronym>\n" +
+                    "$DEFAULT_INDENT_STRING<expanded-acronym >\n" +
+                        "${DEFAULT_INDENT_STRING.repeat(2)}Drawio Project\n" +
+                    "$DEFAULT_INDENT_STRING</expanded-acronym>\n" +
+                    "$DEFAULT_INDENT_STRING<sub-class-of type=\"text/plain\"/>\n" +
                 "</mime-type>"
             val m = MimeTypeSpecs.Builder()
                 .setType(MimeTypeSpecs.Type(MimeTypeSpecs.Type.MimeClass.TEXT, "drawio"))
