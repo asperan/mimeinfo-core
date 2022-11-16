@@ -16,8 +16,25 @@ import io.github.asperan.helper.formatOrEmptyString
  * Base for all elements in a mimetype file.
  */
 interface MimeTypeElement {
+    /**
+     * The name of the element. It is given in the shared MIME system documentation.
+     */
     val elementName: String
+
+    /**
+     * The string defining the attributes. Every element type has its own attributes.
+     * View the documentation for a list of them.
+     */
     val attributesString: String
+
+    /**
+     * Convert the element in a xml string.
+     *
+     * @param indentLevel The level of indentation.
+     * @param indentString The prefix to use for indentation.
+     *
+     * @return The XML corresponding to the element.
+     */
     fun toXmlString(indentLevel: UInt, indentString: String = defaultIndentString): String
 }
 
@@ -37,7 +54,7 @@ abstract class ClosedElement : MimeTypeElement {
 internal abstract class DeleteAllElement(
     private val baseElementName: String,
 ) : ClosedElement() {
-    override val elementName: String get() = "${this.baseElementName}-deleteall"
+    final override val elementName: String get() = "${this.baseElementName}-deleteall"
     final override val attributesString: String get() = ""
 }
 
@@ -46,6 +63,12 @@ internal abstract class DeleteAllElement(
  */
 abstract class ElementWithChildren : MimeTypeElement
 {
+    /**
+     * @param indentLevel The children indent level. It should be increased by 1 for each children level.
+     * @param indentString The children indent string.
+     *
+     * @return The children of the element as a single string.
+     */
     abstract fun getChildrenString(indentLevel: UInt, indentString: String): String
 
     final override fun toXmlString(indentLevel: UInt, indentString: String): String =
