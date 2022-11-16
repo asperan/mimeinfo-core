@@ -8,6 +8,17 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    testImplementation(libs.bundles.kotest)
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+        vendor.set(JvmVendorSpec.ORACLE)
+    }
+}
+
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
     testLogging {
@@ -24,16 +35,5 @@ tasks.withType<Test>().configureEach {
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
         allWarningsAsErrors = true
-    }
-}
-
-dependencies {
-    testImplementation(libs.bundles.kotest)
-}
-
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
-        vendor.set(JvmVendorSpec.ORACLE)
     }
 }
