@@ -8,8 +8,8 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 package io.github.asperan.mimeinfo.mime
 
-import io.github.asperan.helper.computeIndentPrefix
 import io.github.asperan.helper.DEFAULT_INDENT_STRING
+import io.github.asperan.helper.computeIndentPrefix
 import io.github.asperan.helper.formatOrEmptyString
 
 /**
@@ -61,8 +61,7 @@ internal abstract class DeleteAllElement(
 /**
  * Convenience class for elements with general children, i.e. in the form `<abc> ... children ... </abc>`.
  */
-abstract class ElementWithChildren : MimeTypeElement
-{
+abstract class ElementWithChildren : MimeTypeElement {
     /**
      * @param indentLevel The children indent level. It should be increased by 1 for each children level.
      * @param indentString The children indent string.
@@ -73,9 +72,9 @@ abstract class ElementWithChildren : MimeTypeElement
 
     final override fun toXmlString(indentLevel: UInt, indentString: String): String =
         computeIndentPrefix(indentLevel, indentString).let {
-            "${it}<${this.elementName} ${this.attributesString}>\n" +
-                    "${this.getChildrenString(indentLevel + 1u, indentString)}\n" +
-             "${it}</${this.elementName}>"
+            "$it<${this.elementName} ${this.attributesString}>\n" +
+                "${this.getChildrenString(indentLevel + 1u, indentString)}\n" +
+                "$it</${this.elementName}>"
         }
 }
 
@@ -85,8 +84,7 @@ abstract class ElementWithChildren : MimeTypeElement
 abstract class ElementWithTextualChild(
     private val value: String,
     private val xmlLang: String? = null
-) : ElementWithChildren()
-{
+) : ElementWithChildren() {
     final override val attributesString: String get() =
         this.xmlLang.formatOrEmptyString { "xml:lang=\"${this.xmlLang}\"" }
 
