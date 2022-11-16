@@ -11,6 +11,9 @@ package io.github.asperan.mimeinfo.mime
 import io.github.asperan.helper.builder.AbstractBuilder
 import io.github.asperan.helper.defaultPriority
 
+/**
+ * The `treemagic` element.
+ */
 class TreeMagic(
     private val treeMatches: List<TreeMatch>,
     private val priority: UByte,
@@ -21,11 +24,25 @@ class TreeMagic(
     override fun getChildrenString(indentLevel: UInt, indentString: String): String =
         this.treeMatches.joinToString("\n") { it.toXmlString(indentLevel, indentString) }
 
+    /**
+     * Builder of TreeMagic.
+     */
     class Builder : AbstractBuilder<TreeMagic, Builder>() {
         private var treeMatches: List<TreeMatch> = listOf()
         private var priority: UByte = defaultPriority
 
+        /**
+         * Add a TreeMatch to the TreeMagic to be built.
+         *
+         * @param it The TreeMatch to add.
+         */
         val addTreeMatch = builderMethod<TreeMatch> { this.treeMatches += it }
+
+        /**
+         * Set the priority of the TreeMagic.
+         *
+         * @param it The priority to set.
+         */
         val setPriority = builderMethod<UByte> { this.priority = it }
 
         override fun build(): TreeMagic = TreeMagic(this.treeMatches, this.priority)

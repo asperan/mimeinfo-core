@@ -10,6 +10,9 @@ package io.github.asperan.mimeinfo.mime
 
 import io.github.asperan.helper.builder.AbstractBuilder
 
+/**
+ * The `mime-info` element. It is the root element of the mime type specification.
+ */
 class MimeInfoSpecs(
     private val mimeTypes: List<MimeTypeSpecs>,
 ) : ElementWithCompoundChildren() {
@@ -20,9 +23,17 @@ class MimeInfoSpecs(
 
     override fun getChildrenString(indentLevel: UInt, indentString: String): String = this.mimeTypes.joinToString("\n") { it.toXmlString(indentLevel, indentString) }
 
+    /**
+     * Builder for MimeInfo elements.
+     */
     class Builder : AbstractBuilder<MimeInfoSpecs, Builder>() {
         private var mimeTypes: List<MimeTypeSpecs> = listOf()
 
+        /**
+         * Add a MimeTypeSpecs to the MimeInfoSpecs to be built.
+         *
+         * @param it The MimeTypeSpecs to add to the MimeInfo.
+         */
         val addMimeType = builderMethod<MimeTypeSpecs> { this.mimeTypes += it }
 
         override fun build(): MimeInfoSpecs = MimeInfoSpecs(this.mimeTypes)

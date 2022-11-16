@@ -12,6 +12,9 @@ import io.github.asperan.helper.builder.AbstractBuilder
 import io.github.asperan.helper.builder.BuilderStateException
 import io.github.asperan.helper.formatOrEmptyString
 
+/**
+ * The `treematch` element.
+ */
 class TreeMatch(
     private val path: String,
     private val type: Type?,
@@ -31,6 +34,9 @@ class TreeMatch(
 
     override fun getChildrenString(indentLevel: UInt, indentString: String): String = this.children.joinToString("\n"){ toXmlString(indentLevel, indentString) }
 
+    /**
+     * Builder for TreeMatch.
+     */
     class Builder : AbstractBuilder<TreeMatch, Builder>() {
         private var path: String? = null
         private var treeMatchType: Type? = null
@@ -40,12 +46,39 @@ class TreeMatch(
         private var mimetype: String? = null
         private var children: List<TreeMatch> = listOf()
 
+        /**
+         * @param it The path of the TreeMatch.
+         */
         val setPath = builderMethod<String> { this.path = it }
+
+        /**
+         * @param it The Type of the TreeMatch.
+         */
         val setTreeMatchType = builderMethod<Type> { this.treeMatchType = it }
+
+        /**
+         * @param it Whether to enable case matching in the TreeMatch.
+         */
         val setMatchCase = builderMethod<Boolean> { this.matchCase = it }
+
+        /**
+         * @param it Whether to enable executable checks in the TreeMatch.
+         */
         val setIsExecutable = builderMethod<Boolean> { this.isExecutable = it }
+
+        /**
+         * @param it Whether to check emptiness in the TreeMatch.
+         */
         val setNonEmpty = builderMethod<Boolean> { this.nonEmpty = it }
+
+        /**
+         * @param it The mimetype.
+         */
         val setMimetype = builderMethod<String> { this.mimetype = it }
+
+        /**
+         * @param it The TreeMatch to add as child.
+         */
         val addTreeMatch = builderMethod<TreeMatch> { this.children += it }
 
         override fun build(): TreeMatch = when(this.path) {
@@ -54,6 +87,9 @@ class TreeMatch(
         }
     }
 
+    /**
+     * The type of a TreeMatch.
+     */
     enum class Type
     {
         FILE,
