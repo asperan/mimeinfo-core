@@ -1,7 +1,7 @@
 [versions]
 kotlin = "1.7.20"
 kotest = "5.5.0"
-dokka = "1.4.10"
+dokka = "1.7.20"
 kotlin-qa = "0.2.1"
 
 [libraries]
