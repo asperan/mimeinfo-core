@@ -17,3 +17,8 @@ internal const val DEFAULT_PRIORITY: UByte = 50u
  * The default string to use for indentation of the xml file.
  */
 internal const val DEFAULT_INDENT_STRING = "\t"
+
+/**
+ * The XML header to insert in every file.
+ */
+const val XML_HEADER = "<?xml version=\"1.0\"?>"
