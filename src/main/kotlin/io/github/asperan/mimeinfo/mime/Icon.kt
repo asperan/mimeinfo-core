@@ -13,7 +13,6 @@ package io.github.asperan.mimeinfo.mime
  *
  * This element can be used for both `icon` and `generic-icon`.
  */
-class Icon(private val name: String) : ClosedElement() {
+class Icon(name: String) : AbstractIcon(name) {
     override val elementName: String get() = "icon"
-    override val attributesString: String get() = "name=\"${this.name}\""
 }
