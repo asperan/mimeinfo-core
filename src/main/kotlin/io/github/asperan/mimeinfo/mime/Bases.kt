@@ -69,13 +69,6 @@ abstract class ElementWithChildren : MimeTypeElement {
      * @return The children of the element as a single string.
      */
     protected abstract fun getChildrenString(indentLevel: UInt, indentString: String): String
-
-    final override fun toXmlString(indentLevel: UInt, indentString: String): String =
-        computeIndentPrefix(indentLevel, indentString).let {
-            "$it<${this.elementName} ${this.attributesString}>\n" +
-                "${this.getChildrenString(indentLevel + 1u, indentString)}\n" +
-                "$it</${this.elementName}>"
-        }
 }
 
 /**
@@ -88,11 +81,24 @@ abstract class ElementWithTextualChild(
     final override val attributesString: String get() =
         this.xmlLang.formatOrEmptyString { "xml:lang=\"${this.xmlLang}\"" }
 
-    final override fun getChildrenString(indentLevel: UInt, indentString: String): String =
-        computeIndentPrefix(indentLevel, indentString) + this.value
+    final override fun getChildrenString(indentLevel: UInt, indentString: String): String = this.value
+
+    final override fun toXmlString(indentLevel: UInt, indentString: String): String =
+        computeIndentPrefix(indentLevel, indentString).let {
+            "$it<${this.elementName} ${this.attributesString}>" +
+                this.getChildrenString(indentLevel + 1u, indentString) +
+                "</${this.elementName}>"
+        }
 }
 
 /**
  * Convenience class for elements with compound children, i.e. in the form `<abc><def> ... children ... </def></abc>`.
  */
-abstract class ElementWithCompoundChildren : ElementWithChildren()
+abstract class ElementWithCompoundChildren : ElementWithChildren() {
+    final override fun toXmlString(indentLevel: UInt, indentString: String): String =
+        computeIndentPrefix(indentLevel, indentString).let {
+            "$it<${this.elementName} ${this.attributesString}>\n" +
+                "${this.getChildrenString(indentLevel + 1u, indentString)}\n" +
+                "$it</${this.elementName}>"
+        }
+}

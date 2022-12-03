@@ -16,15 +16,9 @@ class TestMimeTypeSpecs : FunSpec() {
     init {
         test("Simple MimeTypeSpecs XML") {
             val testString = "<mime-type type=\"text/drawio\">\n" +
-                "$DEFAULT_INDENT_STRING<comment >\n" +
-                "${DEFAULT_INDENT_STRING.repeat(2)}Just a comment\n" +
-                "$DEFAULT_INDENT_STRING</comment>\n" +
-                "$DEFAULT_INDENT_STRING<acronym >\n" +
-                "${DEFAULT_INDENT_STRING.repeat(2)}DRAWIO\n" +
-                "$DEFAULT_INDENT_STRING</acronym>\n" +
-                "$DEFAULT_INDENT_STRING<expanded-acronym >\n" +
-                "${DEFAULT_INDENT_STRING.repeat(2)}Drawio Project\n" +
-                "$DEFAULT_INDENT_STRING</expanded-acronym>\n" +
+                "$DEFAULT_INDENT_STRING<comment >Just a comment</comment>\n" +
+                "$DEFAULT_INDENT_STRING<acronym >DRAWIO</acronym>\n" +
+                "$DEFAULT_INDENT_STRING<expanded-acronym >Drawio Project</expanded-acronym>\n" +
                 "$DEFAULT_INDENT_STRING<sub-class-of type=\"text/plain\"/>\n" +
                 "</mime-type>"
             val m = MimeTypeSpecs.Builder()
