@@ -27,7 +27,7 @@ class MimeTypeSpecs(
     private val acronyms: List<Acronym>,
     private val expandedAcronyms: List<ExpandedAcronym>,
     private val icon: Icon?,
-    private val genericIcon: Icon?,
+    private val genericIcon: GenericIcon?,
     private val rootXml: RootXml?,
     private val treeMagics: List<TreeMagic>,
 ) : ElementWithCompoundChildren() {
