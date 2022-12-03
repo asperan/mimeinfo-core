@@ -8,7 +8,6 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 package io.github.asperan.mimeinfo.mime
 
-import io.github.asperan.helper.builder.AbstractBuilder
 import io.github.asperan.helper.builder.BuilderStateException
 import io.github.asperan.helper.formatOrEmptyString
 
@@ -38,7 +37,7 @@ class TreeMatch(
     /**
      * Builder for TreeMatch.
      */
-    class Builder : AbstractBuilder<TreeMatch, Builder>() {
+    class Builder {
         private var path: String? = null
         private var treeMatchType: Type? = null
         private var matchCase: Boolean? = null
@@ -48,41 +47,44 @@ class TreeMatch(
         private var children: List<TreeMatch> = listOf()
 
         /**
-         * @param it The path of the TreeMatch.
+         * @param path The path of the TreeMatch.
          */
-        val setPath = builderMethod<String> { this.path = it }
+        fun setPath(path: String) = apply { this.path = path }
 
         /**
-         * @param it The Type of the TreeMatch.
+         * @param type The Type of the TreeMatch.
          */
-        val setTreeMatchType = builderMethod<Type> { this.treeMatchType = it }
+        fun setTreeMatchType(type: Type) = apply { this.treeMatchType = type }
 
         /**
-         * @param it Whether to enable case matching in the TreeMatch.
+         * @param enabled Whether to enable case matching in the TreeMatch.
          */
-        val setMatchCase = builderMethod<Boolean> { this.matchCase = it }
+        fun setMatchCase(enabled: Boolean) = apply { this.matchCase = enabled }
 
         /**
-         * @param it Whether to enable executable checks in the TreeMatch.
+         * @param enabled Whether to enable executable checks in the TreeMatch.
          */
-        val setIsExecutable = builderMethod<Boolean> { this.isExecutable = it }
+        fun setIsExecutable(enabled: Boolean) = apply { this.isExecutable = enabled }
 
         /**
-         * @param it Whether to check emptiness in the TreeMatch.
+         * @param enabled Whether to check emptiness in the TreeMatch.
          */
-        val setNonEmpty = builderMethod<Boolean> { this.nonEmpty = it }
+        fun setNonEmpty(enabled: Boolean) = apply { this.nonEmpty = enabled }
 
         /**
-         * @param it The mimetype.
+         * @param mimetype The mimetype.
          */
-        val setMimetype = builderMethod<String> { this.mimetype = it }
+        fun setMimetype(mimetype: String) = apply { this.mimetype = mimetype }
 
         /**
-         * @param it The TreeMatch to add as child.
+         * @param treeMatch The TreeMatch to add as child.
          */
-        val addTreeMatch = builderMethod<TreeMatch> { this.children += it }
+        fun addTreeMatch(treeMatch: TreeMatch) = apply { this.children += treeMatch }
 
-        override fun build(): TreeMatch = when(this.path) {
+        /**
+         * Build the TreeMatch element.
+         */
+        fun build(): TreeMatch = when(this.path) {
             is String -> TreeMatch(
                 this.path!!,
                 this.treeMatchType,

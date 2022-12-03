@@ -9,7 +9,6 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 package io.github.asperan.mimeinfo.mime
 
 import io.github.asperan.helper.asList
-import io.github.asperan.helper.builder.AbstractBuilder
 import io.github.asperan.helper.builder.BuilderStateException
 
 /**
@@ -64,7 +63,7 @@ class MimeTypeSpecs(
     /**
      * Builder for MimeTypes.
      */
-    class Builder : AbstractBuilder<MimeTypeSpecs, Builder>() {
+    class Builder {
         private var type: Type? = null
         private var globs: List<Glob> = listOf()
         private var globDeleteAll: Boolean = false
@@ -81,76 +80,79 @@ class MimeTypeSpecs(
         private var treeMagics: List<TreeMagic> = listOf()
 
         /**
-         * @param it The type of the MimeTypeSpecs.
+         * @param type The type of the MimeTypeSpecs.
          */
-        val setType = builderMethod<Type> { this.type = it }
+        fun setType(type: Type) = apply { this.type = type }
 
         /**
-         * @param it The glob to add to the MimeTypeSpecs.
+         * @param glob The glob to add to the MimeTypeSpecs.
          */
-        val addGlob = builderMethod<Glob> { this.globs += it }
+        fun addGlob(glob: Glob) = apply { this.globs += glob }
 
         /**
-         * @param it Whether to add the `glob-deleteall` element.
+         * @param enabled Whether to add the `glob-deleteall` element.
          */
-        val setGlobDeleteAll = builderMethod<Boolean> { this.globDeleteAll = it }
+        fun setGlobDeleteAll(enabled: Boolean) = apply { this.globDeleteAll = enabled }
 
         /**
-         * @param it The magic to add to the MimeTypeSpecs.
+         * @param magic The magic to add to the MimeTypeSpecs.
          */
-        val addMagic = builderMethod<Magic> { this.magics += it }
+        fun addMagic(magic: Magic) = apply { this.magics += magic }
 
         /**
-         * @param it Whether to add the `magic-deleteall` element.
+         * @param enabled Whether to add the `magic-deleteall` element.
          */
-        val setMagicDeleteAll = builderMethod<Boolean> { this.magicDeleteAll = it }
+        fun setMagicDeleteAll(enabled: Boolean) = apply { this.magicDeleteAll = enabled }
 
         /**
-         * @param it The alias to add.
+         * @param alias The alias to add.
          */
-        val addAlias = builderMethod<Alias> { this.aliases += it }
+        fun addAlias(alias: Alias) = apply { this.aliases += alias }
 
         /**
-         * @param it The SubClassOf to add.
+         * @param superClass The SubClassOf to add.
          */
-        val addSuperClass = builderMethod<SubClassOf> { this.superClasses += it }
+        fun addSuperClass(superClass: SubClassOf) = apply { this.superClasses += superClass }
 
         /**
-         * @param it The Comment to add.
+         * @param comment The Comment to add.
          */
-        val addComment = builderMethod<Comment> { this.comments += it }
+        fun addComment(comment: Comment) = apply { this.comments += comment }
 
         /**
-         * @param it The Acronym to add.
+         * @param acronym The Acronym to add.
          */
-        val addAcronym = builderMethod<Acronym> { this.acronyms += it }
+        fun addAcronym(acronym: Acronym) = apply { this.acronyms += acronym }
 
         /**
-         * @param it The ExpandedAcronym to Add.
+         * @param expandedAcronym The ExpandedAcronym to Add.
          */
-        val addExpandedAcronym = builderMethod<ExpandedAcronym> { this.expandedAcronyms += it }
+        fun addExpandedAcronym(expandedAcronym: ExpandedAcronym) = apply { this.expandedAcronyms += expandedAcronym }
 
         /**
-         * @param it The Icon to set.
+         * @param icon The Icon to set.
          */
-        val setIcon = builderMethod<Icon?> { this.icon = it }
+        fun setIcon(icon: Icon) = apply { this.icon = icon }
 
         /**
-         * @param it The generic Icon to set.
+         * @param genericIcon The generic Icon to set.
          */
-        val setGenericIcon = builderMethod<GenericIcon?> { this.genericIcon = it }
+        fun setGenericIcon(genericIcon: GenericIcon) = apply { this.genericIcon = genericIcon }
 
         /**
-         * @param it The RootXml to set.
+         * @param rootXml The RootXml to set.
          */
-        val setRootXml = builderMethod<RootXml?> { this.rootXml = it }
+        fun setRootXml(rootXml: RootXml) = apply { this.rootXml = rootXml }
 
         /**
-         * @param it The TreeMagic to add.
+         * @param treeMagic The TreeMagic to add.
          */
-        val addTreeMagic = builderMethod<TreeMagic> { this.treeMagics += it }
+        fun addTreeMagic(treeMagic: TreeMagic) = apply { this.treeMagics += treeMagic }
 
-        override fun build(): MimeTypeSpecs = when (this.type) {
+        /**
+         * Build the MimeType element.
+         */
+        fun build(): MimeTypeSpecs = when (this.type) {
             is Type -> MimeTypeSpecs(
                 this.type!!,
                 this.globs,

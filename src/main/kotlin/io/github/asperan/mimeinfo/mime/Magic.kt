@@ -8,7 +8,6 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 package io.github.asperan.mimeinfo.mime
 
-import io.github.asperan.helper.builder.AbstractBuilder
 import io.github.asperan.helper.DEFAULT_PRIORITY
 
 /**
@@ -26,24 +25,26 @@ class Magic(
     /**
      * Builder for Magic elements.
      */
-    class Builder : AbstractBuilder<Magic, Builder>() {
+    class Builder {
         private var matches: List<Match> = listOf()
         private var priority: UByte = DEFAULT_PRIORITY
 
         /**
          * Adds a match to the magic specification.
          *
-         * @param it The match to add to the Magic.
+         * @param match The match to add to the Magic.
          */
-        val addMatch = this.builderMethod<Match> { this.matches += it }
+        fun addMatch(match: Match) = apply { this.matches += match }
 
         /**
          * Sets the priority of the magic element.
-         * @param it The priority of the Magic.
+         * @param priority The priority of the Magic.
          */
-        val setPriority = this.builderMethod<UByte> { this.priority = it }
+        fun setPriority(priority: UByte) = apply { this.priority = priority }
 
-        override fun build(): Magic = Magic(this.matches, this.priority)
-
+        /**
+         * Build the Magic Element.
+         */
+        fun build(): Magic = Magic(this.matches, this.priority)
     }
 }
