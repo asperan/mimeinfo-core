@@ -24,14 +24,14 @@ class TreeMatch(
 ) : ElementWithCompoundChildren() {
     override val elementName: String get() = "treematch"
     override val attributesString: String get() = "path=\"${this.path}\"" +
-            this.type.formatOrEmptyString { " type=\"${it}\"" } +
-            this.matchCase.formatOrEmptyString { " match-case=\"${it}\"" } +
-            this.isExecutable.formatOrEmptyString { " executable=\"${it}\"" } +
-            this.nonEmpty.formatOrEmptyString { " non-empty=\"${it}\"" } +
-            this.mimetype.formatOrEmptyString { " mimetype=\"${it}\"" }
+        this.type.formatOrEmptyString { " type=\"${it}\"" } +
+        this.matchCase.formatOrEmptyString { " match-case=\"${it}\"" } +
+        this.isExecutable.formatOrEmptyString { " executable=\"${it}\"" } +
+        this.nonEmpty.formatOrEmptyString { " non-empty=\"${it}\"" } +
+        this.mimetype.formatOrEmptyString { " mimetype=\"${it}\"" }
 
     override fun getChildrenString(indentLevel: UInt, indentString: String): String =
-        this.children.joinToString("\n"){ toXmlString(indentLevel, indentString) }
+        this.children.joinToString("\n") { toXmlString(indentLevel, indentString) }
 
     /**
      * Builder for TreeMatch.
@@ -84,7 +84,7 @@ class TreeMatch(
         /**
          * Build the TreeMatch element.
          */
-        fun build(): TreeMatch = when(this.path) {
+        fun build(): TreeMatch = when (this.path) {
             is String -> TreeMatch(
                 this.path!!,
                 this.treeMatchType,
@@ -101,8 +101,7 @@ class TreeMatch(
     /**
      * The type of a TreeMatch.
      */
-    enum class Type
-    {
+    enum class Type {
         FILE,
         DIRECTORY,
         LINK;
