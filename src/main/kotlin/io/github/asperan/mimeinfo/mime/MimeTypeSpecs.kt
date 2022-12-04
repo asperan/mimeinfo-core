@@ -9,7 +9,6 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 package io.github.asperan.mimeinfo.mime
 
 import io.github.asperan.helper.asList
-import io.github.asperan.helper.builder.BuilderStateException
 
 /**
  * The `mime-type` element.
@@ -64,6 +63,7 @@ class MimeTypeSpecs(
      * Builder for MimeTypes.
      */
     class Builder {
+        private val buildErrorMessage = "Building a MimeTypeSpecs require a non-null Type, but the given type was null."
         private var type: Type? = null
         private var globs: List<Glob> = listOf()
         private var globDeleteAll: Boolean = false
@@ -169,7 +169,7 @@ class MimeTypeSpecs(
                 this.rootXml,
                 this.treeMagics
             )
-            else -> throw BuilderStateException()
+            else -> throw IllegalStateException(buildErrorMessage)
         }
     }
 

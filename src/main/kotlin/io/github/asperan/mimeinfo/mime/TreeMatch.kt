@@ -38,6 +38,7 @@ class TreeMatch(
      * Builder for TreeMatch.
      */
     class Builder {
+        private val buildErrorMessage = "Building a TreeMatch requires a non-null path, but the given path was null."
         private var path: String? = null
         private var treeMatchType: Type? = null
         private var matchCase: Boolean? = null
@@ -94,7 +95,7 @@ class TreeMatch(
                 this.mimetype,
                 this.children
             )
-            else -> throw BuilderStateException()
+            else -> throw IllegalStateException(buildErrorMessage)
         }
     }
 
