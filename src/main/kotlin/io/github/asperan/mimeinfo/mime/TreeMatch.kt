@@ -8,7 +8,6 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 package io.github.asperan.mimeinfo.mime
 
-import io.github.asperan.helper.builder.BuilderStateException
 import io.github.asperan.helper.formatOrEmptyString
 
 /**
