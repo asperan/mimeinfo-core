@@ -62,6 +62,7 @@ class MimeTypeSpecs(
     /**
      * Builder for MimeTypes.
      */
+    @Suppress("TooManyFunctions")
     class Builder {
         private val buildErrorMessage = "Building a MimeTypeSpecs require a non-null Type, but the given type was null."
         private var type: Type? = null
